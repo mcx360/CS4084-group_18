@@ -37,12 +37,16 @@
                 app:layout_constraintHeight_percent="0.5">
 
                 <!-- ImageView inside the grey box -->
-                <ImageView
-                    android:id="@+id/featuredImage"
+                <TextView
+                    android:id="@+id/jokeText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/meme"/>
+                    android:text="TEST"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    />
             </androidx.cardview.widget.CardView>
 
             <!-- Updated LinearLayout for Profile Image and Text -->
@@ -112,7 +116,6 @@
                     android:src="@drawable/share"
                     android:contentDescription="Share" />
             </LinearLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
