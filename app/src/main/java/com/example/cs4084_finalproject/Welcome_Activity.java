@@ -3,6 +3,8 @@ package com.example.cs4084_finalproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class Welcome_Activity extends AppCompatActivity {
+    private CheckBox checkBox;
+    private TextView textView5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,12 @@ public class Welcome_Activity extends AppCompatActivity {
     }
 
     public void onContinueButtonClick(View view){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        if(checkBox.isChecked()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+           textView5.setVisibility(View.VISIBLE);
+        }
     }
 }
