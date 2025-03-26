@@ -2,4 +2,12 @@
     <string name="app_name">CS4084-FinalProject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name = "welcome_message"> Welcome to Laughs!</string>
+    <string name="viewer_discretion"> *Warning*: This app may contain offensive language and jokes, you may continue at your own risk.</string>
+    <string name="termsOfUse"> Before continuing, you need to agree to our terms of use:</string>
+    <string name="tos_point1">  1. I agree that I consent to view jokes/memes and I will not be offended.</string>
+    <string name="tos_point2">  2. In the case I do get offended by something, I agree that this was warned to me beforehand and hence I cannot take action against the developers.</string>
+    <string name = "tos_point3"> 3. I agree that I will enjoy the memes and jokes and will not take anything too seriously!</string>
+    <string name="agreement"> I agree to the terms of use as provided to me.</string>
+    <string name="continue_button">Continue</string>
 </resources>
