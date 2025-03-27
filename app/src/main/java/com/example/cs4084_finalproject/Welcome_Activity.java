@@ -19,7 +19,6 @@ public class Welcome_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_welcome);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -29,8 +28,9 @@ public class Welcome_Activity extends AppCompatActivity {
     }
 
     public void onContinueButtonClick(View view){
+        checkBox = findViewById(R.id.checkBox);
         if(checkBox.isChecked()) {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, HomeJokeActivity.class);
             startActivity(intent);
         }
         else{
