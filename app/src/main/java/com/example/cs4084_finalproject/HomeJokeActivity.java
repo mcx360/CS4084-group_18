@@ -1,36 +1,25 @@
 package com.example.cs4084_finalproject;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class HomeJokeActivity extends AppCompatActivity {
 
-    private View tapView;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_joke_activity);
 
-        tapView = findViewById(R.id.tapToContinueView);
+        viewPager = findViewById(R.id.viewPager);
 
-        tapView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    loadNextMemeFragment();
-                }
-                return true;
-            }
-        });
-    }
+        viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
 
-    private void loadNextMemeFragment() {
-        Fragment memeFragment = new MemeFragment();
+        JokePagerAdapter adapter = new JokePagerAdapter(this);
+        viewPager.setAdapter(adapter);
 
-        //TO DO
     }
 }
