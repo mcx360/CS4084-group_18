@@ -99,10 +99,11 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="-26dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="centerInside"
+                    android:contentDescription="Like"
+                    android:onClick="saveJoke"
                     android:padding="8dp"
-                    android:src="@drawable/heart"
-                    android:contentDescription="Like" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/heart" />
 
                 <!-- Share Button -->
                 <ImageButton

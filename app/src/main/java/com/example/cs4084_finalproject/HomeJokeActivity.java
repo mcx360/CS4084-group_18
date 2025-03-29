@@ -1,6 +1,13 @@
 package com.example.cs4084_finalproject;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.android.volley.RequestQueue;
@@ -16,11 +23,15 @@ public class HomeJokeActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private List<String> jokes = new ArrayList<>();
     private RequestQueue requestQueue;
+    private ImageButton likeBtn;
+    private DBHandler dbHandler = new DBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_joke_activity);
+
+
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
@@ -62,4 +73,13 @@ public class HomeJokeActivity extends AppCompatActivity {
 
         requestQueue.add(jokeRequest);
     }
+
+    //called when like button is clicked, saves jokes to local database
+    public void saveJoke(View view){
+        TextView jokeText = findViewById(R.id.jokeText);
+        String joke = jokeText.getText().toString();
+        dbHandler.addNewJoke(joke);
+        Toast.makeText(HomeJokeActivity.this, "joke saved", Toast.LENGTH_SHORT).show();
+    }
+
 }
