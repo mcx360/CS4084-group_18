@@ -1,6 +1,12 @@
 package com.example.cs4084_finalproject;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -19,6 +25,7 @@ public class HomeMemeActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private RequestQueue requestQueue;
     private List<String> memeUrls = new ArrayList<>();
+    private DBHandler dbHandler = new DBHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,4 +75,14 @@ public class HomeMemeActivity extends AppCompatActivity {
         int index = input.indexOf('?');
         return index != -1 ? input.substring(0, index) : input;
     }
+
+    //not currently fully working as memeURLs are limited to size3
+    public void saveMeme(View view){
+        int index = viewPager.getCurrentItem();
+            String memeURL = memeUrls.get(index);
+            dbHandler.addNewMeme(memeURL);
+            Toast.makeText(HomeMemeActivity.this, "Meme saved", Toast.LENGTH_SHORT).show();
+            Log.i("memeSaved", memeURL);
+    }
+
 }
