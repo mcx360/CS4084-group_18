@@ -1,5 +1,6 @@
 package com.example.cs4084_finalproject;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
@@ -24,6 +26,7 @@ public class NotificationWorker extends Worker {
         super(context, params);
     }
 
+    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     @Override
     public Result doWork() {
 
