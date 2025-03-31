@@ -64,4 +64,8 @@ public class MemePagerAdapter extends FragmentStateAdapter {
         int index = input.indexOf('?');
         return index != -1 ? input.substring(0, index) : input;
     }
+
+    public List<String> getMemeUrls(){
+        return memeUrls;
+    }
 }

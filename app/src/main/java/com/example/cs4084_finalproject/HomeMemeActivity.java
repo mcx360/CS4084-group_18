@@ -24,6 +24,7 @@ public class HomeMemeActivity extends AppCompatActivity {
 
     private ViewPager2 viewPager;
     private RequestQueue requestQueue;
+    private MemePagerAdapter adapter;
     private List<String> memeUrls = new ArrayList<>();
     private DBHandler dbHandler = new DBHandler(this);
 
@@ -39,7 +40,7 @@ public class HomeMemeActivity extends AppCompatActivity {
 
         // Load first meme before adapter
         fetchFirstMemes(() -> {
-            MemePagerAdapter adapter = new MemePagerAdapter(HomeMemeActivity.this, memeUrls);
+            adapter = new MemePagerAdapter(HomeMemeActivity.this, memeUrls);
             viewPager.setAdapter(adapter);
         });
     }
@@ -79,7 +80,7 @@ public class HomeMemeActivity extends AppCompatActivity {
     //not currently fully working as memeURLs are limited to size3
     public void saveMeme(View view){
         int index = viewPager.getCurrentItem();
-            String memeURL = memeUrls.get(index);
+            String memeURL = adapter.getMemeUrls().get(index);
             dbHandler.addNewMeme(memeURL);
             Toast.makeText(HomeMemeActivity.this, "Meme saved", Toast.LENGTH_SHORT).show();
             Log.i("memeSaved", memeURL);
