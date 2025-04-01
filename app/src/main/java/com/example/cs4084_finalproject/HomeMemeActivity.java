@@ -2,6 +2,8 @@ package com.example.cs4084_finalproject;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class HomeMemeActivity extends AppCompatActivity {
@@ -27,6 +30,17 @@ public class HomeMemeActivity extends AppCompatActivity {
     private MemePagerAdapter adapter;
     private List<String> memeUrls = new ArrayList<>();
     private DBHandler dbHandler = new DBHandler(this);
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_bar, menu);
+        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_action_name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Laughs");
+
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -43,7 +43,7 @@ public class Welcome_Activity extends AppCompatActivity {
             //if TOS are agreed, then the user will receive notifications from us
             scheduleNotification();
 
-            Intent intent = new Intent(this, HomeJokeActivity.class);
+            Intent intent = new Intent(this, HomeMemeActivity.class);
             startActivity(intent);
         }
         else{

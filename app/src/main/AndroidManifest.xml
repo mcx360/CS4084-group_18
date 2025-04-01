@@ -29,6 +29,12 @@
             android:theme="@style/topActionBar"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".HomeMemeActivity"
+            android:theme="@style/topActionBar"
+            android:exported="true">
+        </activity>
+
     </application>
 
 

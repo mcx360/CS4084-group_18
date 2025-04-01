@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
@@ -29,7 +31,6 @@ public class HomeJokeActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private List<String> jokes = new ArrayList<>();
     private RequestQueue requestQueue;
-    private ImageButton likeBtn;
     private DBHandler dbHandler = new DBHandler(this);
 
     @Override
@@ -38,8 +39,11 @@ public class HomeJokeActivity extends AppCompatActivity {
         inflater.inflate(R.menu.top_bar, menu);
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_action_name);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Laughs");
+
         return true;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
