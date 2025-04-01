@@ -1,7 +1,11 @@
 package com.example.cs4084_finalproject;
 
+import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -9,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager2.widget.ViewPager2;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -17,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class HomeJokeActivity extends AppCompatActivity {
 
@@ -27,11 +33,18 @@ public class HomeJokeActivity extends AppCompatActivity {
     private DBHandler dbHandler = new DBHandler(this);
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_bar, menu);
+        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_action_name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_joke_activity);
-
-
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);

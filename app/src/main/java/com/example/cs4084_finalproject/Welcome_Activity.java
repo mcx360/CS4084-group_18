@@ -18,6 +18,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class Welcome_Activity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class Welcome_Activity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Objects.requireNonNull(getSupportActionBar()).hide();
     }
 
     public void onContinueButtonClick(View view){
