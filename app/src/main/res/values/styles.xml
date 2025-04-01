@@ -4,9 +4,4 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="topActionBar" parent="Theme.AppCompat.DayNight">
-        <item name="android:textColorPrimary">@color/orange</item>
-    </style>
-
-
 </resources>
