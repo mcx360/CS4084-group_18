@@ -39,6 +39,7 @@ public class Welcome_Activity extends AppCompatActivity {
 
     public void onContinueButtonClick(View view){
         checkBox = findViewById(R.id.checkBox);
+        textView5 = findViewById(R.id.textView5);
         if(checkBox.isChecked()) {
             //if TOS are agreed, then the user will receive notifications from us
             scheduleNotification();
