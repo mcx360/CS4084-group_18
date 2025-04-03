@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Sets default fragment on startup
-        replaceFragment(new HomeFragment());
+        replaceFragment(new JokesFragment());
+
+        binding.bottomNavigationView.setSelectedItemId(R.id.jokes);
+
 
         // Make BottomNavigationView background transparent
         binding.bottomNavigationView.setBackgroundResource(android.R.color.transparent);
@@ -28,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
 
-            if (itemId == R.id.home) {
-                selectedFragment = new HomeFragment();
+            if (itemId == R.id.saved_jokes) {
+                selectedFragment = new SavedJokesFragment();
             } else if (itemId == R.id.jokes) {
-                selectedFragment = new JokeFragment();
+                selectedFragment = new JokesFragment();
             } else if (itemId == R.id.memes) {
-                selectedFragment = new MemeFragment();
-            } else if (itemId == R.id.account) {
-                selectedFragment = new AccountFragment();
+                selectedFragment = new MemesFragment();
+            } else if (itemId == R.id.saved_memes) {
+                selectedFragment = new SavedMemesFragment();
             }
 
             if (selectedFragment != null) {
@@ -46,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Upload button (island-style FAB)
-        binding.fabUpload.setOnClickListener(v -> {
-            replaceFragment(new UploadFragment());
+        binding.fabRefresh.setOnClickListener(v -> {
+            replaceFragment(new RefreshFragment());
         });
     }
 

@@ -8,14 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-public class MemeFragment extends Fragment {
+public class SavedMemesFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflates the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meme, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_saved_memes, container, false);
     }
 }

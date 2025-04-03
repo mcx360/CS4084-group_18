@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottomAppBar"
         android:layout_gravity="bottom"
-         android:background="@color/tab_bar_icon"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp"
-            >
+        android:background="@color/tab_bar_icon"
+        app:fabCradleMargin="8dp"
+        app:fabCradleRoundedCornerRadius="50dp">
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,11 +35,11 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabUpload"
+        android:id="@+id/fabRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:src="@drawable/upload_content"
+        android:src="@drawable/refresh"
         app:layout_anchor="@id/bottomAppBar">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

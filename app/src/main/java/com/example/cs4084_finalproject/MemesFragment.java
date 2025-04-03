@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class UploadFragment extends Fragment {
+public class MemesFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upload, container, false);
+        // Inflates the layout for this fragment
+        return inflater.inflate(R.layout.fragment_meme, container, false);
     }
 }

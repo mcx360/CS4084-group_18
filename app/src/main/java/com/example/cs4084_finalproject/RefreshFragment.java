@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class JokeFragment extends Fragment {
+public class RefreshFragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflates the layout for this fragment
-        return inflater.inflate(R.layout.fragment_joke, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_upload, container, false);
     }
 }
