@@ -17,12 +17,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         // Sets default fragment on startup
         replaceFragment(new JokesFragment());
 
         binding.bottomNavigationView.setSelectedItemId(R.id.jokes);
 
-
+        binding.topAppBar.setTitle("Jokes");
         // Make BottomNavigationView background transparent
         binding.bottomNavigationView.setBackgroundResource(android.R.color.transparent);
 
@@ -33,12 +34,20 @@ public class MainActivity extends AppCompatActivity {
 
             if (itemId == R.id.saved_jokes) {
                 selectedFragment = new SavedJokesFragment();
+                binding.topAppBar.setTitle("Saved Jokes");
+
             } else if (itemId == R.id.jokes) {
                 selectedFragment = new JokesFragment();
+                binding.topAppBar.setTitle("Jokes");
+
             } else if (itemId == R.id.memes) {
                 selectedFragment = new MemesFragment();
+                binding.topAppBar.setTitle("Memes");
+
             } else if (itemId == R.id.saved_memes) {
                 selectedFragment = new SavedMemesFragment();
+                binding.topAppBar.setTitle("Saved Memes");
+
             }
 
             if (selectedFragment != null) {
@@ -48,8 +57,29 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        // Upload button (island-style FAB)
-        binding.fabRefresh.setOnClickListener(v -> replaceFragment(new RefreshFragment()));
+        // FAB
+        binding.fabRefresh.setOnClickListener(v -> {
+            replaceFragment(new RefreshFragment());
+            binding.topAppBar.setTitle("Refresh");
+        });
+
+        //noti and settings buttons
+        binding.topAppBar.setOnMenuItemClickListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.notifications) {
+                replaceFragment(new NotificationsFragment());
+                binding.topAppBar.setTitle("Notifications");
+                return true;
+
+            } else if (id == R.id.settings) {
+                replaceFragment(new SettingsFragment());
+                binding.topAppBar.setTitle("Settings");
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void replaceFragment(Fragment fragment) {
