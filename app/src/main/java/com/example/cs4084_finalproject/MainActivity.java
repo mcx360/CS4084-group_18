@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Upload button (island-style FAB)
-        binding.fabRefresh.setOnClickListener(v -> {
-            replaceFragment(new RefreshFragment());
-        });
+        binding.fabRefresh.setOnClickListener(v -> replaceFragment(new RefreshFragment()));
     }
 
     private void replaceFragment(Fragment fragment) {

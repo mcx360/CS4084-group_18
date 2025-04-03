@@ -2,4 +2,12 @@
     <string name="app_name">CS4084-FinalProject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saved_jokes">Saved Jokes</string>
+    <string name="todo">TODO</string>
+    <string name="upload">Upload</string>
+    <string name="meme">Meme</string>
+    <string name="jokes">Jokes</string>
+    <string name="saved_memes">Saved Memes</string>
+    <string name="memes">Memes</string>
+    <string name="refresh">Refresh</string>
 </resources>
