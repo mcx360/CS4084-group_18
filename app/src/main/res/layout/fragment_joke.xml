@@ -1,3 +1,4 @@
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,7 +23,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <!-- Grey Box (CardView) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/imageCardView"
@@ -35,7 +35,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.5">
-
                 <!-- ImageView inside the grey box -->
                 <TextView
                     android:id="@+id/jokeText"
@@ -62,7 +61,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
-
                 <!-- Profile Image -->
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profileImage"
