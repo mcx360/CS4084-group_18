@@ -34,7 +34,9 @@ public class Welcome_Activity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 
     public void onContinueButtonClick(View view){
@@ -44,7 +46,7 @@ public class Welcome_Activity extends AppCompatActivity {
             //if TOS are agreed, then the user will receive notifications from us
             scheduleNotification();
 
-            Intent intent = new Intent(this, HomeMemeActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
         else{

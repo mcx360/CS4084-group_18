@@ -3,4 +3,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#E28743</color>
+
+    <color name="background">#FFE9C8</color>
+
+    <color name="tab_bar">#252525</color>
+    <color name="tab_bar_icon">#EBEBF5</color>
+
+    <color name="neon_pink">#FF0DE7</color>
+    <color name="orange_text">#FF9500</color>
+    <color name="brown_text">#5E2E2E</color>
+
+    <color name="home_light">#464646</color>
+    <color name="home_dark">#000000</color>
+
+    <color name="pink_button">#FFCCF4</color>
+    <color name="button_stroke">#FF69DE</color>
+
 </resources>
