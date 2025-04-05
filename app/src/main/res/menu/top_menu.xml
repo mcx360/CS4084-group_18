@@ -3,14 +3,14 @@
     <item
         android:id="@+id/notifications"
         android:icon="@drawable/bell_outline"
-        android:title="TODO"
-        app:showAsAction="always" />
+        android:title="@string/notifications"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/cog_outline"
-        android:title="TODO"
-        app:showAsAction="always" />
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
 
 
 

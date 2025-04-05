@@ -11,4 +11,7 @@
     <string name="memes">Memes</string>
     <string name="refresh">Refresh</string>
     <string name="laughs">Laughs</string>
+    <string name="fab">Fab</string>
+    <string name="settings">settings</string>
+    <string name="notifications">notifications</string>
 </resources>
