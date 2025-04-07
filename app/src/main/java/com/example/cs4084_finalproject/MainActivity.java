@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Sets default fragment on startup
-        replaceFragment(new JokesFragment());
+        replaceFragment(new JokeFragment());
 
         binding.bottomNavigationView.setSelectedItemId(R.id.jokes);
         binding.topAppBar.setTitle("Jokes");
@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 binding.topAppBar.setTitle("Saved Jokes");
 
             } else if (itemId == R.id.jokes) {
-                selectedFragment = new JokesFragment();
+                selectedFragment = new JokeFragment();
                 binding.topAppBar.setTitle("Jokes");
 
             } else if (itemId == R.id.memes) {
-                selectedFragment = new MemesFragment();
+                selectedFragment = new MemeFragment();
                 binding.topAppBar.setTitle("Memes");
 
             } else if (itemId == R.id.saved_memes) {
