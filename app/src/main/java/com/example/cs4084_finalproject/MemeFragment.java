@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -34,8 +37,9 @@ public class MemeFragment extends Fragment {
         featuredImage = view.findViewById(R.id.featuredImage);
         textView = view.findViewById(R.id.textView3);
 
+        String memeUrl = null;
         if (getArguments() != null) {
-            String memeUrl = getArguments().getString(ARG_MEME_URL);
+            memeUrl = getArguments().getString(ARG_MEME_URL);
             if (memeUrl != null && !memeUrl.equals("noMemeReturned")) {
                 loadMemeImage(memeUrl);
                 textView.setText("API Name");
@@ -44,6 +48,17 @@ public class MemeFragment extends Fragment {
                 textView.setText("Error loading meme");
             }
         }
+
+        ImageButton likeButton = view.findViewById(R.id.btn_like);
+        String finalMemeUrl = memeUrl;
+        likeButton.setOnClickListener(v -> {
+            if (finalMemeUrl != null && !finalMemeUrl.equals("noMemeReturned")) {
+                DBHandler dbHandler = new DBHandler(requireContext());
+                dbHandler.addNewMeme(finalMemeUrl);
+                Toast.makeText(requireContext(), "Meme saved", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         return view;
     }

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +36,14 @@ public class JokeFragment extends Fragment {
             String joke = getArguments().getString(ARG_JOKE);
             jokeText.setText(joke);
         }
+
+        ImageButton likeButton = view.findViewById(R.id.btn_like);
+        likeButton.setOnClickListener(v -> {
+            String joke = jokeText.getText().toString();
+            DBHandler dbHandler = new DBHandler(requireContext());
+            dbHandler.addNewJoke(joke);
+            Toast.makeText(requireContext(), "Joke saved", Toast.LENGTH_SHORT).show();
+        });
 
         return view;
     }

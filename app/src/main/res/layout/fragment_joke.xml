@@ -98,7 +98,6 @@
                     android:layout_marginTop="-26dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Like"
-                    android:onClick="saveJoke"
                     android:padding="8dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/heart" />
