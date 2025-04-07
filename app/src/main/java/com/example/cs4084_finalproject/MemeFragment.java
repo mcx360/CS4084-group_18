@@ -1,6 +1,5 @@
 package com.example.cs4084_finalproject;
 
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
 import com.android.volley.toolbox.ImageRequest;
 
 import java.util.ArrayList;
@@ -39,6 +39,7 @@ public class MemeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_meme, container, false);
         featuredImage = view.findViewById(R.id.featuredImage);
         textView = view.findViewById(R.id.textView3);
+        ImageButton likeButton = view.findViewById(R.id.btn_like);
 
         String memeUrl = null;
         if (getArguments() != null) {
@@ -46,31 +47,35 @@ public class MemeFragment extends Fragment {
             if (memeUrl != null && !memeUrl.equals("noMemeReturned")) {
                 loadMemeImage(memeUrl);
                 textView.setText("API Name");
+
+                DBHandler dbHandler = new DBHandler(requireContext());
+                ArrayList<String> savedMemes = dbHandler.readMemes();
+
+                if (savedMemes.contains(memeUrl)) {
+                    likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
+                }
+
+                String finalMemeUrl = memeUrl;
+                likeButton.setOnClickListener(v -> {
+                    DBHandler db = new DBHandler(requireContext());
+                    ArrayList<String> currentSaved = db.readMemes();
+
+                    if (currentSaved.contains(finalMemeUrl)) {
+                        db.deleteMeme(finalMemeUrl);
+                        likeButton.setColorFilter(null);
+                        Toast.makeText(requireContext(), "Meme unsaved", Toast.LENGTH_SHORT).show();
+                    } else {
+                        db.addNewMeme(finalMemeUrl);
+                        likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
+                        Toast.makeText(requireContext(), "Meme saved", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             } else {
                 featuredImage.setImageResource(R.drawable.meme);
                 textView.setText("Error loading meme");
             }
         }
-
-        ImageButton likeButton = view.findViewById(R.id.btn_like);
-        String finalMemeUrl = memeUrl;
-        likeButton.setOnClickListener(v -> {
-            if (finalMemeUrl != null && !finalMemeUrl.equals("noMemeReturned")) {
-                DBHandler dbHandler = new DBHandler(requireContext());
-                ArrayList<String> savedMemes = dbHandler.readMemes();
-
-                if (savedMemes.contains(finalMemeUrl)) {
-                    Toast.makeText(requireContext(), "Meme already saved!", Toast.LENGTH_SHORT).show();
-                } else {
-                    dbHandler.addNewMeme(finalMemeUrl);
-                    Toast.makeText(requireContext(), "Meme saved!", Toast.LENGTH_SHORT).show();
-
-
-                    likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
-                }
-            }
-        });
-
 
         return view;
     }

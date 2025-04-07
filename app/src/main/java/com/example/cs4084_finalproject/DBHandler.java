@@ -89,7 +89,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public void deleteMeme(String memeURL){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(JOKES_TABLE, "meme=?", new String[]{memeURL});
+        db.delete(MEMES_TABLE, "meme=?", new String[]{memeURL});
     }
 
     //method called to check if db exists already
