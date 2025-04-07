@@ -79,10 +79,4 @@ public class HomeJokeFragment extends Fragment {
         requestQueue.add(jokeRequest);
     }
 
-    public void saveJoke(View view) {
-        TextView jokeText = view.findViewById(R.id.jokeText);
-        String joke = jokeText.getText().toString();
-        dbHandler.addNewJoke(joke);
-        Toast.makeText(requireContext(), "joke saved", Toast.LENGTH_SHORT).show();
-    }
 }

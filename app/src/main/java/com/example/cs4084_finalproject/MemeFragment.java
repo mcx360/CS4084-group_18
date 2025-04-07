@@ -1,6 +1,6 @@
 package com.example.cs4084_finalproject;
 
-import android.graphics.Bitmap;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.android.volley.toolbox.ImageRequest;
+
+import java.util.ArrayList;
 
 public class MemeFragment extends Fragment {
     private static final String ARG_MEME_URL = "meme_url";
@@ -54,8 +57,17 @@ public class MemeFragment extends Fragment {
         likeButton.setOnClickListener(v -> {
             if (finalMemeUrl != null && !finalMemeUrl.equals("noMemeReturned")) {
                 DBHandler dbHandler = new DBHandler(requireContext());
-                dbHandler.addNewMeme(finalMemeUrl);
-                Toast.makeText(requireContext(), "Meme saved", Toast.LENGTH_SHORT).show();
+                ArrayList<String> savedMemes = dbHandler.readMemes();
+
+                if (savedMemes.contains(finalMemeUrl)) {
+                    Toast.makeText(requireContext(), "Meme already saved!", Toast.LENGTH_SHORT).show();
+                } else {
+                    dbHandler.addNewMeme(finalMemeUrl);
+                    Toast.makeText(requireContext(), "Meme saved!", Toast.LENGTH_SHORT).show();
+
+
+                    likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
+                }
             }
         });
 

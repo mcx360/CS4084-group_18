@@ -27,14 +27,6 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
-        <activity
-            android:name=".HomeJokeActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".HomeMemeActivity"
-            android:exported="true">
-        </activity>
 
     </application>
 

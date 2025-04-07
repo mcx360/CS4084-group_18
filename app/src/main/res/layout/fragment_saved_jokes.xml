@@ -1,18 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SavedJokesFragment">
+    android:orientation="vertical"
 
+    android:paddingBottom="85dp">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/savedJokeRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/saved_jokes"
-        android:background="@color/background"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
-
-</FrameLayout>
+        android:layout_height="match_parent"/>
+</LinearLayout>

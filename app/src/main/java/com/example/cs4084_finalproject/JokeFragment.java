@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
 
 public class JokeFragment extends Fragment {
 
@@ -31,18 +34,34 @@ public class JokeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_joke, container, false);
         jokeText = view.findViewById(R.id.jokeText);
+        ImageButton likeButton = view.findViewById(R.id.btn_like);
 
         if (getArguments() != null) {
             String joke = getArguments().getString(ARG_JOKE);
             jokeText.setText(joke);
+
+
+            DBHandler dbHandler = new DBHandler(requireContext());
+            ArrayList<String> savedJokes = dbHandler.readJokes();
+            if (savedJokes.contains(joke)) {
+                likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
+            }
         }
 
-        ImageButton likeButton = view.findViewById(R.id.btn_like);
         likeButton.setOnClickListener(v -> {
-            String joke = jokeText.getText().toString();
+            String joke = jokeText.getText().toString().trim();
             DBHandler dbHandler = new DBHandler(requireContext());
-            dbHandler.addNewJoke(joke);
-            Toast.makeText(requireContext(), "Joke saved", Toast.LENGTH_SHORT).show();
+            ArrayList<String> savedJokes = dbHandler.readJokes();
+
+            if (savedJokes.contains(joke)) {
+                dbHandler.deleteJoke(joke);
+                Toast.makeText(requireContext(), "Joke unsaved", Toast.LENGTH_SHORT).show();
+                likeButton.setColorFilter(null);
+            } else {
+                dbHandler.addNewJoke(joke);
+                Toast.makeText(requireContext(), "Joke saved", Toast.LENGTH_SHORT).show();
+                likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
+            }
         });
 
         return view;
