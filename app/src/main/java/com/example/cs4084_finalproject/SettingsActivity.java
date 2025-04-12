@@ -3,6 +3,7 @@ package com.example.cs4084_finalproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -31,8 +32,14 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void cancelNotification(View view){
-        WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag("daily_notification");
-        Toast.makeText(this,"Notifications turned off",Toast.LENGTH_SHORT).show();
+        if(!((Switch)findViewById(R.id.switch3)).isChecked()) {
+            WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag("daily_notification");
+            Toast.makeText(this, "Notifications turned off", Toast.LENGTH_SHORT).show();
+
+        } else{
+            Welcome_Activity.scheduleNotification(getApplicationContext());
+        }
+
     }
     public void clearCache(View view) {
        try {
