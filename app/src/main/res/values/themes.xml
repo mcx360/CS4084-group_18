@@ -6,5 +6,9 @@
     </style>
 
     <style name="Theme.CS4084FinalProject" parent="Base.Theme.CS4084FinalProject" />
+    <style name="Theme.LaughsApp.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
 
 </resources>

@@ -21,7 +21,8 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.LaughsApp.NoActionBar"/>
         <activity
             android:name=".Welcome_Activity"
             android:exported="true">
@@ -37,6 +38,7 @@
         <activity
             android:name=".HomeMemeActivity"
             android:exported="true" />
+
     </application>
 
 </manifest>

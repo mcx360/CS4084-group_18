@@ -10,6 +10,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.work.WorkManager;
+import androidx.appcompat.app.AppCompatDelegate;
+
 
 import java.io.File;
 
@@ -29,15 +31,41 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-    }
+        Switch darkModeSwitch = findViewById(R.id.switch2);
+        int currentMode = AppCompatDelegate.getDefaultNightMode();
+        darkModeSwitch.setChecked(currentMode == AppCompatDelegate.MODE_NIGHT_YES);
 
+        Switch notificationSwitch = findViewById(R.id.switch3);
+        boolean notificationsEnabled = getSharedPreferences("settings", MODE_PRIVATE)
+                .getBoolean("notifications", true); // true by default
+        notificationSwitch.setChecked(notificationsEnabled);
+    }
+public void darkMode(View view){
+    Switch darkModeSwitch = findViewById(R.id.switch2);
+    boolean isChecked = darkModeSwitch.isChecked();
+    getSharedPreferences("settings", MODE_PRIVATE)
+            .edit()
+            .putBoolean("dark_mode", isChecked)
+            .apply();
+        if(isChecked){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+}
     public void cancelNotification(View view){
-        if(!((Switch)findViewById(R.id.switch3)).isChecked()) {
+     boolean isChecked = ((Switch) (findViewById(R.id.switch3))).isChecked();
+        getSharedPreferences("settings", MODE_PRIVATE)
+                .edit()
+                .putBoolean("notifications", isChecked)
+                .apply();
+        if(!isChecked) {
             WorkManager.getInstance(getApplicationContext()).cancelAllWorkByTag("daily_notification");
             Toast.makeText(this, "Notifications turned off", Toast.LENGTH_SHORT).show();
 
         } else{
             Welcome_Activity.scheduleNotification(getApplicationContext());
+            Toast.makeText(this, "Notifications turned on", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -82,5 +110,10 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
+    }
+
+    public void backToLaughs(View view) {
+        Intent intent = new Intent(this,HomeMemeActivity.class);
+        startActivity(intent);
     }
 }
