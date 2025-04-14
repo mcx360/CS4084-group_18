@@ -25,6 +25,16 @@
     <string name="about_the_devs"> About us</string>
     <string name="clear_cache">Clear Cache</string>
     <string name="back_button">Back to Laughs!</string>
+    <!-- About us string values-->
+    <string name="aboutUs">About us</string>
+    <string name="aboutusContent">We are 4 passionate students in the module CS4084 who decided to develop a fun enjoyable app which targets people who just want to have a laugh!</string>
+    <string name="group_Members"> Here are the group members: </string>
+    <string name="vivian"> Vivian Jently, Student ID 22079017</string>
+    <string name="michal"> Michal Kornacki Student ID 22361979</string>
+    <string name="Oscar"> Oscar Zhou Student ID 22338705</string>
+    <string name="lorcan"> Lorcan Hyland Student ID 21340609</string>
+    <string name="back_To_settings">Back</string>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

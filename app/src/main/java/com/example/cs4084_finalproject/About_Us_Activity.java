@@ -1,6 +1,8 @@
 package com.example.cs4084_finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +22,10 @@ public class About_Us_Activity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void back_to_settings(View view) {
+        Intent intent = new Intent(this,SettingsActivity.class);
+        startActivity(intent);
     }
 }
