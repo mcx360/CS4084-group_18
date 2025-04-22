@@ -60,29 +60,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_percent="0.2">
 
-                <!-- Profile Image -->
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/profileImage"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="-26dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/meme"
-                    app:shapeAppearanceOverlay="@style/CircleImageView" />
-
-                <!-- TextView -->
-
-                <!-- Flexible Space to Push Icons to the Right -->
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:paddingTop="8sp"
-                    android:layout_marginTop="-26dp"
-                    android:text="TextView"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
 
                 <View
                     android:layout_width="70dp"

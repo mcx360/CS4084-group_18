@@ -38,7 +38,6 @@ public class MemeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_meme, container, false);
         featuredImage = view.findViewById(R.id.featuredImage);
-        textView = view.findViewById(R.id.textView3);
         ImageButton likeButton = view.findViewById(R.id.btn_like);
 
         String memeUrl = null;
@@ -46,7 +45,7 @@ public class MemeFragment extends Fragment {
             memeUrl = getArguments().getString(ARG_MEME_URL);
             if (memeUrl != null && !memeUrl.equals("noMemeReturned")) {
                 loadMemeImage(memeUrl);
-                textView.setText("API Name");
+
 
                 DBHandler dbHandler = new DBHandler(requireContext());
                 ArrayList<String> savedMemes = dbHandler.readMemes();

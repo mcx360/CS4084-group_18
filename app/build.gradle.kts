@@ -50,9 +50,14 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.6")
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.core:core-ktx:1.13.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
 
     val work_version = "2.9.0"
 
     implementation("androidx.work:work-runtime:$work_version")
     implementation("androidx.work:work-runtime:$work_version")
+
+
 }
