@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CS4084-FinalProject</string>
+    <string name="app_name">Laughs</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Welcome Activity string values -->
     <string name="welcome_message"> Welcome to Laughs!</string>
