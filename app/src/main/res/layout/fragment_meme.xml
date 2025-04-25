@@ -41,6 +41,7 @@
                     android:id="@+id/featuredImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="16dp"
                     android:scaleType="fitCenter"
                     />
             </androidx.cardview.widget.CardView>
@@ -71,7 +72,7 @@
                     android:id="@+id/btn_like"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="-26dp"
+                    android:layout_marginTop="-22dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Like"
                     android:padding="8dp"
@@ -83,7 +84,7 @@
                     android:id="@+id/btn_share"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginTop="-26dp"
+                    android:layout_marginTop="-22dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:scaleType="centerInside"
                     android:padding="8dp"
