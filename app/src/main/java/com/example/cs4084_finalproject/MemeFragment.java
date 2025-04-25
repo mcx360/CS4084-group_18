@@ -81,8 +81,7 @@ public class MemeFragment extends Fragment {
                 });
 
             } else {
-                featuredImage.setImageResource(R.drawable.meme); // fallback image
-                textView.setText("Error loading meme");
+                featuredImage.setImageResource(R.drawable.error); // fallback image
             }
         }
 
