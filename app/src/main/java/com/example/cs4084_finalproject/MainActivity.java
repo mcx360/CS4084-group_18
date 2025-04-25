@@ -1,7 +1,14 @@
 package com.example.cs4084_finalproject;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.Manifest;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,6 +16,7 @@ import com.example.cs4084_finalproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_NOTIFICATION_PERMISSION = 1001;
     ActivityMainBinding binding;
 
     @Override
@@ -19,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
         // Sets default fragment on startup
         replaceFragment(new HomeJokeFragment());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            boolean isGranted = ContextCompat.checkSelfPermission(
+                    this, android.Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED;
+
+            if (isGranted) {
+                binding.topAppBar.getMenu().findItem(R.id.notifications).setVisible(false);
+            }
+        }
+
 
         binding.bottomNavigationView.setSelectedItemId(R.id.jokes);
         binding.topAppBar.setTitle("Jokes");
@@ -66,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.notifications) {
-                replaceFragment(new NotificationsFragment());
-                binding.topAppBar.setTitle("Notifications");
+                requestNotificationPermission();
                 return true;
 
             } else if (id == R.id.settings) {
@@ -87,4 +105,31 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitAllowingStateLoss();
     }
+
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        REQUEST_NOTIFICATION_PERMISSION);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
+            if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                // Permission denied
+            }
+        }
+    }
+
 }
