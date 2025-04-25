@@ -65,7 +65,9 @@
         android:backgroundTint="@color/white"
         android:contentDescription="@string/fab"
         android:src="@drawable/refresh"
-        app:layout_anchor="@id/bottomAppBar">
+        android:visibility="gone"
+        app:layout_anchor="@+id/bottomAppBar"
+        app:layout_anchorGravity="top|center">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

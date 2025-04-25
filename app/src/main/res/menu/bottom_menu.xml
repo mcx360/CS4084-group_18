@@ -9,10 +9,6 @@
         android:title="@string/jokes"
         android:icon="@drawable/joke_outline" />
 
-    <item android:id="@+id/refresh"
-        android:title="@string/refresh"
-        android:enabled="false"/>
-
     <item android:id="@+id/memes"
         android:title="@string/memes"
         android:icon="@drawable/meme_outline" />

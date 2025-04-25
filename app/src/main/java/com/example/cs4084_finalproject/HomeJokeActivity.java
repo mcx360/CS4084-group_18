@@ -31,6 +31,7 @@ public class HomeJokeActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private DBHandler dbHandler = new DBHandler(this);
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -42,7 +43,8 @@ public class HomeJokeActivity extends AppCompatActivity {
 
         return true;
     }
-
+     */
+    /*
     public void setTopBarTitle(String title){
         TextView textView = new TextView(this);
         textView.setText(title);
@@ -54,6 +56,7 @@ public class HomeJokeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(textView);
     }
+     */
 
 
     @Override
