@@ -1,5 +1,7 @@
 package com.example.cs4084_finalproject;
 
+import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +66,22 @@ public class JokeFragment extends Fragment {
             }
         });
 
+
+        ImageButton share_button = view.findViewById(R.id.btn_share);
+        share_button.setOnClickListener(view1 -> shareJoke());
+
         return view;
+    }
+
+    public void shareJoke() {
+         String joke = jokeText.getText().toString();
+         if(joke.isEmpty()){
+             return;
+         }
+         Intent shareJoke_intent = new Intent(Intent.ACTION_SEND);
+         shareJoke_intent.setType("text/plain");
+         shareJoke_intent.putExtra(Intent.EXTRA_TEXT,joke);
+         startActivity(Intent.createChooser(shareJoke_intent, "Share this joke using"));
+
     }
 }

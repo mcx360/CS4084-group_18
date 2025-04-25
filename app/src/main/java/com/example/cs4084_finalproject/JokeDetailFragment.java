@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class JokeDetailFragment extends Fragment {
@@ -23,7 +24,6 @@ public class JokeDetailFragment extends Fragment {
     private ArrayList<String> savedJokes;
 
     public JokeDetailFragment() {
-
     }
 
     public static JokeDetailFragment newInstance(String jokeText) {
@@ -61,13 +61,11 @@ public class JokeDetailFragment extends Fragment {
         dbHandler = new DBHandler(requireContext());
         savedJokes = dbHandler.readJokes();
 
-
         if (savedJokes.contains(jokeText)) {
             likeButton.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white));
         } else {
             likeButton.setColorFilter(null);
         }
-
 
         likeButton.setOnClickListener(v -> {
             if (savedJokes.contains(jokeText)) {
@@ -83,6 +81,15 @@ public class JokeDetailFragment extends Fragment {
             }
         });
 
+        shareButton.setOnClickListener(v -> shareJoke());
+    }
 
+    private void shareJoke() {
+        if (jokeText == null || jokeText.isEmpty()) return;
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, jokeText);
+        startActivity(Intent.createChooser(shareIntent, "Share this joke using"));
     }
 }

@@ -19,4 +19,6 @@
     <color name="pink_button">#FFCCF4</color>
     <color name="button_stroke">#FF69DE</color>
 
+    <color name="red">	 #b30000</color>
+
 </resources>

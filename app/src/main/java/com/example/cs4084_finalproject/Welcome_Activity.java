@@ -2,6 +2,7 @@ package com.example.cs4084_finalproject;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -44,7 +45,7 @@ public class Welcome_Activity extends AppCompatActivity {
         textView5 = findViewById(R.id.textView5);
         if(checkBox.isChecked()) {
             //if TOS are agreed, then the user will receive notifications from us
-            scheduleNotification();
+            scheduleNotification(getApplicationContext());
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -55,7 +56,7 @@ public class Welcome_Activity extends AppCompatActivity {
     }
 
     //daily notifications
-    public void scheduleNotification() {
+    public static void scheduleNotification(Context context) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
 
@@ -76,6 +77,6 @@ public class Welcome_Activity extends AppCompatActivity {
                 .addTag("daily_notification")
                 .build();
 
-        WorkManager.getInstance(getApplicationContext()).enqueue(notificationWorkRequest);
+        WorkManager.getInstance(context).enqueue(notificationWorkRequest);
     }
 }
