@@ -45,6 +45,10 @@ public class HomeJokeFragment extends Fragment {
         requestQueue = mySingleton.getInstance(requireContext()).getRequestQueue();
 
         fetchFirstJoke(() -> {
+            if (!isAdded()) {
+                return;
+            }
+
             JokePagerAdapter adapter = new JokePagerAdapter(requireActivity(), jokes);
             viewPager.setAdapter(adapter);
         });
@@ -60,6 +64,10 @@ public class HomeJokeFragment extends Fragment {
                 response -> {
                     String joke = response.optString("joke", "No joke found");
                     jokes.add(joke);
+                    if (!isAdded()) {
+                        return;
+                    }
+
                     onComplete.run();
                 },
                 error -> {

@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:cardBackgroundColor="#3e4145"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="40dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
             <!-- Grey Box (CardView) -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/imageCardView"
-                app:cardBackgroundColor="#3e4145"
+                app:cardBackgroundColor="@color/white"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:cardCornerRadius="20dp"

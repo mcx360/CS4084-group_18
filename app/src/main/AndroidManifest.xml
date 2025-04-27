@@ -32,6 +32,8 @@
         <activity
             android:name=".HomeMemeActivity"
             android:exported="true" />
+        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".About_Us_Activity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -8,7 +8,6 @@
     android:background="@drawable/initial_background"
     tools:context=".SettingsActivity">
 
-
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
@@ -23,79 +22,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Implement the method in Java -->
+    <!-- Dark Mode Switch -->
 
-    <Switch
+    <!-- Notifications Switch -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch2"
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:layout_marginTop="60dp"
+        android:onClick="darkMode"
         android:text="@string/switch_darkMode"
         android:textColor="@color/white"
-        android:onClick="darkMode"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        app:layout_constraintTop_toBottomOf="@id/textView11" />
 
-    <Switch
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switch3"
         android:layout_width="347dp"
         android:layout_height="63dp"
         android:text="@string/notifications_preference"
         android:textColor="@color/white"
         android:checked="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="cancelNotification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch2"
-        app:layout_constraintVertical_bias="0.148"
-        android:onClick="cancelNotification"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        app:layout_constraintTop_toBottomOf="@id/switch2"
+        app:layout_constraintVertical_bias="0.148" />
 
-    <Button
+    <!-- Clear Cache Button -->
+
+    <!-- About the Developers Button -->
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
-        android:layout_width="176dp"
-        android:layout_height="61dp"
-        android:layout_marginBottom="200dp"
+        android:layout_width="190dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="204dp"
         android:backgroundTint="@color/red"
         android:onClick="clearCache"
         android:text="@string/clear_cache"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:layout_width="175dp"
-        android:layout_height="60dp"
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="192dp"
+        android:layout_height="70dp"
         android:onClick="openAboutPage"
         android:text="@string/about_the_devs"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@id/button2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch3"
+        app:layout_constraintTop_toBottomOf="@id/switch3"
         app:layout_constraintVertical_bias="0.603" />
 
-    <Button
+    <!-- Back Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button3"
-        android:layout_width="172dp"
-        android:layout_height="56dp"
+        android:layout_width="181dp"
+        android:layout_height="68dp"
         android:backgroundTint="@color/orange"
         android:onClick="backToLaughs"
         android:text="@string/back_button"
+        android:textSize="16sp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.66" /> <!-- Implement the method in Java -->
-
-
+        app:layout_constraintTop_toBottomOf="@id/button2"
+        app:layout_constraintVertical_bias="0.66" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

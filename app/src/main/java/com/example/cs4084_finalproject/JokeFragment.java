@@ -2,6 +2,7 @@ package com.example.cs4084_finalproject;
 
 import android.content.Intent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -36,6 +38,7 @@ public class JokeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_joke, container, false);
         jokeText = view.findViewById(R.id.jokeText);
+        jokeText.setTextColor(Color.BLACK);
         ImageButton likeButton = view.findViewById(R.id.btn_like);
 
         if (getArguments() != null) {
@@ -69,7 +72,18 @@ public class JokeFragment extends Fragment {
 
         ImageButton share_button = view.findViewById(R.id.btn_share);
         share_button.setOnClickListener(view1 -> shareJoke());
-
+        CardView imageCardView = view.findViewById(R.id.imageCardView);
+        CardView JokeFragmentBox = view.findViewById(R.id.JokeFragmentBox);
+        if(SettingsActivity.isDarkModeEnabled(requireContext())){
+            imageCardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.Gray));
+            JokeFragmentBox.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.Gray));
+            jokeText.setTextColor(Color.WHITE);
+        }
+        else{
+            imageCardView.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.white));
+            JokeFragmentBox.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.white));
+            jokeText.setTextColor(Color.BLACK);
+        }
         return view;
     }
 
