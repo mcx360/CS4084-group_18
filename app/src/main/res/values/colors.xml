@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#E28743</color>
+    <color name="Gray"> #3e4145 </color>
 
     <color name="background">#FFE9C8</color>
 

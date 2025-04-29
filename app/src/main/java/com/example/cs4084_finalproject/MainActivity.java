@@ -1,12 +1,19 @@
 package com.example.cs4084_finalproject;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.strictmode.IncorrectContextUseViolation;
+import android.util.TypedValue;
 import android.Manifest;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -15,7 +22,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.cs4084_finalproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1001;
     ActivityMainBinding binding;
 
@@ -24,6 +30,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Check dark mode setting
+        if (SettingsActivity.isDarkModeEnabled(this)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+
+        if (!SettingsActivity.isDarkModeEnabled(this)) {
+            int iconColor = Color.BLACK;
+            binding.topAppBar.setTitleTextColor(iconColor);
+            binding.topAppBar.setNavigationIconTint(iconColor);
+            binding.topAppBar.setBackgroundColor(Color.WHITE);
+            if (binding.topAppBar.getMenu().findItem(R.id.notifications).getIcon() != null) {
+                binding.topAppBar.getMenu().findItem(R.id.notifications).getIcon().setTint(iconColor);
+            }
+            if (binding.topAppBar.getMenu().findItem(R.id.settings).getIcon() != null) {
+                binding.topAppBar.getMenu().findItem(R.id.settings).getIcon().setTint(iconColor);
+            }
+        } else {
+            int iconColor = Color.WHITE;
+            binding.topAppBar.setTitleTextColor(iconColor);
+            binding.topAppBar.setNavigationIconTint(iconColor);
+            binding.topAppBar.setBackgroundColor(Color.DKGRAY);
+            if (binding.topAppBar.getMenu().findItem(R.id.notifications).getIcon() != null) {
+                binding.topAppBar.getMenu().findItem(R.id.notifications).getIcon().setTint(iconColor);
+            }
+            if (binding.topAppBar.getMenu().findItem(R.id.settings).getIcon() != null) {
+                binding.topAppBar.getMenu().findItem(R.id.settings).getIcon().setTint(iconColor);
+            }
+        }
+
+
 
         // Sets default fragment on startup
         replaceFragment(new HomeJokeFragment());
@@ -37,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.topAppBar.getMenu().findItem(R.id.notifications).setVisible(false);
             }
         }
-
 
         binding.bottomNavigationView.setSelectedItemId(R.id.jokes);
         binding.topAppBar.setTitle("Jokes");
@@ -89,21 +128,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             } else if (id == R.id.settings) {
-                replaceFragment(new SettingsFragment());
-                binding.topAppBar.setTitle("Settings");
+              Intent intent = new Intent(this, SettingsActivity.class);
+              startActivity(intent);
                 return true;
             }
 
             return false;
         });
-    }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
-        fragmentTransaction.setReorderingAllowed(true);
-        fragmentTransaction.commitAllowingStateLoss();
+
     }
 
     private void requestNotificationPermission() {
@@ -132,4 +165,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 }

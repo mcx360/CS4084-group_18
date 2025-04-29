@@ -1,9 +1,10 @@
 package com.example.cs4084_finalproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -31,17 +32,17 @@ public class SettingsActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        Switch darkModeSwitch = findViewById(R.id.switch2);
+        SwitchMaterial darkModeSwitch = findViewById(R.id.switch2);
         int currentMode = AppCompatDelegate.getDefaultNightMode();
         darkModeSwitch.setChecked(currentMode == AppCompatDelegate.MODE_NIGHT_YES);
 
-        Switch notificationSwitch = findViewById(R.id.switch3);
+        SwitchMaterial notificationSwitch = findViewById(R.id.switch3);
         boolean notificationsEnabled = getSharedPreferences("settings", MODE_PRIVATE)
                 .getBoolean("notifications", true); // true by default
         notificationSwitch.setChecked(notificationsEnabled);
     }
 public void darkMode(View view){
-    Switch darkModeSwitch = findViewById(R.id.switch2);
+    SwitchMaterial darkModeSwitch = findViewById(R.id.switch2);
     boolean isChecked = darkModeSwitch.isChecked();
     getSharedPreferences("settings", MODE_PRIVATE)
             .edit()
@@ -52,9 +53,16 @@ public void darkMode(View view){
         } else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+        recreate();
+}
+
+public static boolean isDarkModeEnabled(Context context){
+
+     return  context.getSharedPreferences("settings",context.MODE_PRIVATE).getBoolean("dark_mode",false);
 }
     public void cancelNotification(View view){
-     boolean isChecked = ((Switch) (findViewById(R.id.switch3))).isChecked();
+     boolean isChecked = ((SwitchMaterial) (findViewById(R.id.switch3))).isChecked();
         getSharedPreferences("settings", MODE_PRIVATE)
                 .edit()
                 .putBoolean("notifications", isChecked)
@@ -113,7 +121,7 @@ public void darkMode(View view){
     }
 
     public void backToLaughs(View view) {
-        Intent intent = new Intent(this,HomeMemeActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 }

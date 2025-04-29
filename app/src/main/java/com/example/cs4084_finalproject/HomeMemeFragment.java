@@ -47,6 +47,10 @@ public class HomeMemeFragment extends Fragment {
         requestQueue = mySingleton.getInstance(requireContext()).getRequestQueue();
 
         fetchFirstMemes(() -> {
+            if (!isAdded()) {
+                return;
+            }
+
             adapter = new MemePagerAdapter(requireActivity(), memeUrls);
             viewPager.setAdapter(adapter);
         });
@@ -64,6 +68,10 @@ public class HomeMemeFragment extends Fragment {
                         String memeUrl = extractMemeUrl(response);
                         memeUrls.add(memeUrl);
                         if (loadedCount.incrementAndGet() == 3) {
+                            if (!isAdded()) {
+                                return;
+                            }
+
                             onComplete.run();
                         }
                     },

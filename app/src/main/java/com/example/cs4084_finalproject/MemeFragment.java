@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -83,9 +85,23 @@ public class MemeFragment extends Fragment {
             } else {
                 featuredImage.setImageResource(R.drawable.error); // fallback image
             }
+
+
         }
 
         shareButton.setOnClickListener(v -> shareMeme());
+
+
+        CardView imageCardview = view.findViewById(R.id.imageCardView);
+        CardView memeFragmentBox = view.findViewById(R.id.MemeFragmentBox);
+        if(SettingsActivity.isDarkModeEnabled(requireContext())){
+          imageCardview.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.Gray));
+          memeFragmentBox.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.Gray));
+        }
+        else{
+            imageCardview.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.white));
+            memeFragmentBox.setCardBackgroundColor(ContextCompat.getColor(requireContext(),R.color.white));
+        }
 
         return view;
     }
