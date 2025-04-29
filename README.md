@@ -4,7 +4,9 @@ Mock design file made in Figma https://www.figma.com/design/hIPZfH3IvCnoTo1oj1Ki
 ## Application
 Laughs is an android mobile application that displays memes and jokes fetched from an API to the user in an elegant UI. It allows users to save memes/jokes via a locla SQLite datebase. The app also supports sharing memes/jokes and has some basic user customisation options.
 ## Memes view:
-![image](https://github.com/user-attachments/assets/c73b12aa-4f42-4530-b25f-c82ec2bdc444)
+<img src="https://github.com/user-attachments/assets/c73b12aa-4f42-4530-b25f-c82ec2bdc444" 
+     alt="Your image description" 
+     style="max-width:100%; height:auto;" />
 ## Local memes library:
 ![image](https://github.com/user-attachments/assets/bef3dbde-a1a3-4526-9d6e-fdf3a68a92ae)
 ## Jokes view
