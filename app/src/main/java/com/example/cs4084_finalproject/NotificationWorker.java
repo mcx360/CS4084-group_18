@@ -32,7 +32,7 @@ public class NotificationWorker extends Worker {
 
         createNotificationChannel();
 
-        Intent intent = new Intent(getApplicationContext(), HomeMemeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
